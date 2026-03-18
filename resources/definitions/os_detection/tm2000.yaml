@@ -1,0 +1,15 @@
+os: tm2000
+text: 'TimeMachines TM2000/TM2000A'
+type: appliance
+mib_dir: timemachines
+
+# This device currently reports a generic Net-SNMP sysObjectID (NET-SNMP-MIB::netSnmpAgentOIDs.10),
+# so we key off sysDescr + existence of a TimeMachines enterprise OID instead.
+discovery:
+  -
+    sysDescr:
+      - 'am335x-evm'
+    snmpget:
+      - oid: TMI-COMMON-SMI::tmiSystemTime.0
+      - op: exists
+      - value: true
