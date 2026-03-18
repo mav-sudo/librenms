@@ -1,0 +1,117 @@
+modules:
+  sensors:
+    count:
+      data:
+        - oid: TMI-COMMON-SMI::tmiNTPCount
+          value: TMI-COMMON-SMI::tmiNTPCount
+          num_oid: '.1.3.6.1.4.1.54414.1.1.1.0'
+          index: 'tmiNTPCount.0'
+          descr: 'NTP requests'
+          group: 'NTP'
+
+        - oid: TMI-COMMON-SMI::tmiNTPStratum
+          value: TMI-COMMON-SMI::tmiNTPStratum
+          num_oid: '.1.3.6.1.4.1.54414.1.1.2.0'
+          index: 'tmiNTPStratum.0'
+          descr: 'NTP stratum'
+          group: 'NTP'
+
+        - oid: TMI-COMMON-SMI::tmiGPSAltitude
+          value: TMI-COMMON-SMI::tmiGPSAltitude
+          num_oid: '.1.3.6.1.4.1.54414.1.1.5.0'
+          index: 'tmiGPSAltitude.0'
+          descr: 'GPS altitude'
+          group: 'GPS'
+
+        - oid: TMI-COMMON-SMI::tmiGPSSatsUsed
+          value: TMI-COMMON-SMI::tmiGPSSatsUsed
+          num_oid: '.1.3.6.1.4.1.54414.1.1.11.0'
+          index: 'tmiGPSSatsUsed.0'
+          descr: 'GPS satellites used'
+          group: 'GPS'
+
+    delay:
+      data:
+        - oid: TMI-COMMON-SMI::tmiNTPTimeSincePeerSynced
+          value: TMI-COMMON-SMI::tmiNTPTimeSincePeerSynced
+          num_oid: '.1.3.6.1.4.1.54414.1.1.4.0'
+          index: 'tmiNTPTimeSincePeerSynced.0'
+          descr: 'Seconds since peer sync lost'
+          group: 'NTP'
+
+        - oid: TMI-COMMON-SMI::tmiGPSHoldovertime
+          value: TMI-COMMON-SMI::tmiGPSHoldovertime
+          num_oid: '.1.3.6.1.4.1.54414.1.1.7.0'
+          index: 'tmiGPSHoldovertime.0'
+          descr: 'GPS holdover time (seconds)'
+          group: 'GPS'
+
+    state:
+      data:
+        - oid: TMI-COMMON-SMI::tmiGPSFix
+          value: TMI-COMMON-SMI::tmiGPSFix
+          num_oid: '.1.3.6.1.4.1.54414.1.1.6.0'
+          index: 'tmiGPSFix.0'
+          descr: 'GPS fix'
+          group: 'GPS'
+          state_name: tm2000GPSFix
+          states:
+            - { value: 0, generic: 2, graph: 1, descr: nolock }
+            - { value: 1, generic: 1, graph: 1, descr: 2Dlock }
+            - { value: 2, generic: 0, graph: 1, descr: 3Dlock }
+
+        - oid: TMI-COMMON-SMI::tmiNTPPeerSynced
+          value: TMI-COMMON-SMI::tmiNTPPeerSynced
+          num_oid: '.1.3.6.1.4.1.54414.1.1.3.0'
+          index: 'tmiNTPPeerSynced.0'
+          descr: 'Using peer time source'
+          group: 'NTP'
+          state_name: tm2000NTPPeerSynced
+          states:
+            - { value: 0, generic: 2, graph: 1, descr: no }
+            - { value: 1, generic: 0, graph: 1, descr: yes }
+
+        - oid: TMI-COMMON-SMI::tmiGPSTimeKnown
+          value: TMI-COMMON-SMI::tmiGPSTimeKnown
+          num_oid: '.1.3.6.1.4.1.54414.1.1.12.0'
+          index: 'tmiGPSTimeKnown.0'
+          descr: 'GPS time known / PTP available'
+          group: 'GPS'
+          state_name: tm2000GPSTimeKnown
+          states:
+            - { value: 0, generic: 2, graph: 1, descr: no }
+            - { value: 1, generic: 0, graph: 1, descr: yes }
+
+        - oid: TMI-COMMON-SMI::tmiPeerSyncFail
+          value: TMI-COMMON-SMI::tmiPeerSyncFail
+          num_oid: '.1.3.6.1.4.1.54414.1.1.14.0'
+          index: 'tmiPeerSyncFail.0'
+          descr: 'Peer sync fail'
+          group: 'NTP'
+          state_name: tm2000PeerSyncFail
+          states:
+            - { value: 0, generic: 0, graph: 1, descr: ok }
+            - { value: 1, generic: 2, graph: 1, descr: fail }
+
+        - oid: TMI-COMMON-SMI::tmiHoldoverExpired
+          value: TMI-COMMON-SMI::tmiHoldoverExpired
+          num_oid: '.1.3.6.1.4.1.54414.1.1.15.0'
+          index: 'tmiHoldoverExpired.0'
+          descr: 'Holdover expired'
+          group: 'NTP'
+          state_name: tm2000HoldoverExpired
+          states:
+            - { value: 0, generic: 0, graph: 1, descr: ok }
+            - { value: 1, generic: 2, graph: 1, descr: expired }
+
+        - oid: TMI-COMMON-SMI::tmiManualTimeSet
+          value: TMI-COMMON-SMI::tmiManualTimeSet
+          num_oid: '.1.3.6.1.4.1.54414.1.1.0.0'
+          index: 'tmiManualTimeSet.0'
+          descr: 'Manual time set (web)'
+          group: 'System'
+          state_name: tm2000ManualTimeSet
+          states:
+            - { value: 0, generic: 0, graph: 1, descr: no }
+            - { value: 1, generic: 1, graph: 1, descr: yes }
+
